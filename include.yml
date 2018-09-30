@@ -1,0 +1,10 @@
+--- # Full include tasks example
+- hosts: all
+  user: ec2-user
+  become: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - include: packages.yml
+    - name: Verify that telnet is installed
+      raw: yum list installed | grep telnet > /tmp/pkgs.log

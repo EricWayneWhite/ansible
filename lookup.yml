@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  user: eric
+  become: no
+  connection: local
+  gather_facts: no
+  tasks:
+    - debug: msg="Lookup hero name Bruce {{ lookup('csvfile', 'Batman file=lookup.csv delimiter=, col=0 default=NOMATCH') }}"
+    - debug: msg="{{ lookup('env','HOME') }} is the value listed"
